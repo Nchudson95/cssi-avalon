@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd"
+    >
+<html lang="en">
+  <head>
+    <title>Avalon - Mission Select</title>
+    <link href = "/static/css/gamepage.css" rel = "stylesheet">
+  </head>
+  <body>
+    <div id = "main_box">
+    <div id= "header_box_background">
+    <div id = "header_box">
+    Avalon - Mission Select
+    </div>
+    </div>
+    </div>
+    <div id="contentdiv">
+        <p>This is the MissionSelect Page</p>
+        
+        <p>Your proposed mission was verified and valid, now you may move onto the vote</p>
+        <form method='get' action='/gamerv{{round}}v'>
+            <input type='hidden' name='user' value='{{user}}'/>
+            <input type='hidden' name='id' value='{{gameid}}'/>
+            <button type='submit' value='submit'>Move to vote</button>
+        </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% if not game.playerroles %}
+        <meta http-equiv="refresh" content="2" >
+    {% endif %}
+    <title>Avalon - Game Lobby</title>
+    <link href="http://roboto-webfont.googlecode.com/svn/trunk/roboto.all.css" rel="stylesheet" type="text/css">
+    <link href = "/static/css/gamepage.css" rel = "stylesheet">
+  </head>
+  <body>
+    <div id = "main_box">
+    <div id= "header_box_background">
+    <div id = "header_box">
+    Avalon - Game Lobby
+    </div>
+    </div>
+    <div id='contentdiv'>
+        <p>Players in this Game:</p>
+        <ul>
+        {% for player in game.playersingame %}
+            <li>{{ player }}</li>
+        {% endfor %}
+        </ul>
+        {% if game.playersingame|length < game.maxplayers %}
+            <p>Still waiting for necessary players</p>
+            <p>There are currently {{game.playersingame|length}}/{{game.maxplayers}} players</p>
+        {% endif %}
+        {% if game.playersingame|length == game.maxplayers %}
+            <p>Necessary players present!</p>
+            {% if user == game.gamecreator and not game.playerroles %}
+            <form method='post' action='/gamlobby'>
+                <input type='hidden' name='user' value='{{ user }}'>
+                <input type='hidden' name='id' value='{{ gameid }}'>
+                <button type= 'submit' value='submit'>Assign roles!</button>
+            </form>
+            {% endif %}
+            {% if game.playerroles %}
+                <form method='get' action="/gamerv1w">
+                    <input type='hidden' name='user' value='{{ user }}'>
+                    <input type='hidden' name='id' value='{{ gameid }}'>
+                    <button type='submit' value='submit'>Begin Round 1</button>
+                </form>
+            {% endif %}
+        {% endif %}
+        <p>{{game.playerroles}}</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd"
+    >
+<html lang="en">
+  <head>
+    {% if not game.playersonmission|length == game.passfailvotes|length %}
+        <meta http-equiv="refresh" content="2" >
+    {% endif %}
+    <title>Avalon - Game Lobby</title>
+    <link href="http://roboto-webfont.googlecode.com/svn/trunk/roboto.all.css" rel="stylesheet" type="text/css">
+    <link href = "/static/css/gamepage.css" rel = "stylesheet">
+  </head>
+  <body>
+    <div id = "main_box">
+    <div id= "header_box_background">
+    <div id = "header_box">
+    Avalon - Mission!
+    </div>
+    </div>
+    <div id='contentdiv'>
+        {% if not game.playersonmission|length == game.passfailvotes|length %}
+        <p>Awaiting results of Mission</p>
+        <p>Current Pass/Fail votes present: {{ game.passfailvotes|length }}/{{ game.playersonmission|length }}</p>
+        {% else %}
+        <p>Results are in!</p>
+        <form type='get' action='/gamerm{{round}}r'>
+            <input type='hidden' name='id' value='{{gameid}}'/>
+            <input type='hidden' name='user' value='{{user}}'/>
+            <button type='submit' value='submit'>Results!</button>
+        </form>
+        {% endif %}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd"
+    >
+<html lang="en">
+  <head>
+    <title>Avalon - Game Lobby</title>
+    <link href="http://roboto-webfont.googlecode.com/svn/trunk/roboto.all.css" rel="stylesheet" type="text/css">
+    <link href = "/static/css/gamepage.css" rel = "stylesheet">
+  </head>
+  <body>
+    <div id = "main_box">
+    <div id= "header_box_background">
+    <div id = "header_box">
+    Avalon - Mission!
+    </div>
+    </div>
+    <div id='contentdiv'>
+        {% if game.roundscores[round - 2] == 'pass' %}
+            <h2>Mission Passed!</h2>
+            <p>Point added to Resistance</p>
+            <form type='get' action='/gamerv{{round}}w'>
+                <input type='hidden' name='id' value='{{gameid}}'/>
+                <input type='hidden' name='user' value='{{user}}'/>
+                <button type='submit' value='submit'>Next Round</button>
+            </form>
+        {% elif game.roundscores[round - 2] == 'fail' %}
+            <h2>Mission Failed!</h2>
+            <p>Point added to the Spies</p>
+            <form type='get' action='/gamerv{{round}}w'>
+                <input type='hidden' name='id' value='{{gameid}}'/>
+                <input type='hidden' name='user' value='{{user}}'/>
+                <button type='submit' value='submit'>Next Round</button>
+            </form>
+        {% else %}
+            <h2>Something went wrong...</h2>
+        {% endif %}
+    </div>
+  </body>
+</html>

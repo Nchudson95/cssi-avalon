@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd"
+    >
+<html lang="en">
+<head>
+    <title>Avalon - Landing Page</title>
+    <link href = "/static/css/gamepage.css" rel = "stylesheet">
+</head>
+<body>
+    <div id='main_box'>
+    <div id='header_box_background'>
+        <div id='header_box'>Avalon - Landing Page</div>
+        </div>
+    </div>
+    <div id='contentdiv'>
+        <h1>Join Game</h1>
+      <p>You've succesfully been added to the game</p>
+      <p>Current Games</p>
+      <ul>
+      {% for game in games %}
+        <li>
+            Name: {{ game.nameofgame }} - Players: {{ game.playersingame|join(', ') }} - Creator: {{ game.gamecreator}} 
+            {% if game.playersingame|length >= 10 %}
+            - Game is Full
+            {% endif %}
+            </li>
+      {% endfor %}
+      </ul>
+      <p>Now you can move on to {{pickedgame.nameofgame}}'s Game Lobby</p>
+      <form method='get' action='/gamlobby'>
+            <input type='hidden' name='id' value='{{gameid}}'>
+            <input type='hidden' name='user' value='{{ user }}'>
+            <button type='submit' value='submit'>Game Lobby</button>
+        </form>
+    </div>
+ 
+</html> 

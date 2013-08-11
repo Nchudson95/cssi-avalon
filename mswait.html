@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd"
+    >
+<html lang="en">
+  <head>
+    {% if not game.submittedselection %}
+        <meta http-equiv='refresh' content='3'>
+    {% endif %}
+    <title>Avalon - Mission Select</title>
+    <link href = "/static/css/gamepage.css" rel = "stylesheet">
+  </head>
+  <body>
+    <div id = "main_box">
+    <div id= "header_box_background">
+    <div id = "header_box">
+    Avalon - Mission Select
+    </div>
+    </div>
+    </div>
+    <div id="contentdiv">
+        <p>This is the Mission Select Waiting Page</p>
+        {% if not game.submittedselection %}
+            <p>Waiting for Mission Motion to be passed... please wait</p>
+            <p><strong>{{ game.missionselector }}</strong> is nominating *resistance* members to go on the mission, please wait.</p>
+        {% endif %}
+        
+        {% if game.submittedselection %}
+            <p>Mission Motion has been sent</p>
+            <form method='get' action='/gamerv{{round}}v'>
+                <input type='hidden' name='user' value='{{user}}'/>
+                <input type='hidden' name='id' value='{{gameid}}'/>
+                <button type='submit' value='submit'>Move on to vote</button>
+            </form>
+        {% endif %}
+        
+    </div>
+  </body>
+</html>

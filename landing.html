@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd"
+    >
+<html lang="en">
+<head>
+    <meta http-equiv='refresh' content='10'>
+    <title>Avalon - Landing Page</title>
+    <link href = "/static/css/gamepage.css" rel = "stylesheet">
+</head>
+<body>
+    <div id='main_box'>
+    <div id='header_box_background'>
+        <div id='header_box'>Avalon - Landing Page</div>
+        </div>
+    </div>
+    <div id='contentdiv'>
+    {% if faileduser %}
+    <p style = 'color:red;text-shadow: 1px 1px 8px #330'>You didn't pick a user name!</p>
+    {% endif %}
+    {% if failedgame %}
+    <p style='color:red;text-shadow: 1px 1px 8px #330'>You didn't select a game to join! </p>
+    {% endif %}
+    <form action="/" method="post">
+        <h1>Join Game</h1>
+      <label>Username:
+        <input type="text" name="user">
+      </label>
+      <p>Current Games:</p>
+      <ul>
+      {% if not games[0] %}
+        <li>There are no current games. Click on the "Create Game" button to create a new game.</li>
+      {% endif %}
+      {% for game in games %}
+        <li>
+            Name: {{ game.nameofgame }} - Players: {{ game.playersingame|join(', ') }} - Creator: {{ game.gamecreator}} 
+            {% if not game.playersingame|length >= game.maxplayers %}
+                <input type='radio' name='game' value="{{ game.key.id() }}">
+            {% endif %}
+            {% if game.playersingame|length >= game.maxplayers %}
+            - Game is Full
+            {% endif %}
+            </li>
+      {% endfor %}
+      </ul>
+      <button type="submit" id='first_submit'>Join Game</button>
+    
+    
+    </form>
+    <form action='/creategame'>
+      <button>Create New Game</button>
+    </form>
+    </div>
+ 
+</html> 

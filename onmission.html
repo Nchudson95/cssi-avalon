@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd"
+    >
+<html lang="en">
+  <head>
+    <title>Avalon - Game Lobby</title>
+    <link href="http://roboto-webfont.googlecode.com/svn/trunk/roboto.all.css" rel="stylesheet" type="text/css">
+    <link href = "/static/css/gamepage.css" rel = "stylesheet">
+  </head>
+  <body>
+    <div id = "main_box">
+    <div id= "header_box_background">
+    <div id = "header_box">
+    Avalon - Mission!
+    </div>
+    </div>
+    <div id='contentdiv'>
+        <h2>Current Scores:</h2>
+        <p>Resistance: {{scores[0]}} - Spies: {{scores[1]}}</p>
+        {% if game.playerroles[user] in ['assasin','morgana', 'spy1','spy2'] %}
+            <p>Choose whether you want to pass or fail this mission:</p>
+            <ul>
+                    <form type='get' action='/gamerm{{round}}w'>
+                    <li>
+                    Pass: <input type='radio' name='passfail' value='pass'/>
+                    Fail: <input type='radio' name='passfail' value='fail'/>
+                    </li>
+                    <input type='hidden' name='id' value='{{gameid}}'/>
+                    <input type='hidden' name='user' value='{{user}}'/>
+                    <button type='submit' value='submit'>Submit</button>
+                    </form>
+            </ul>
+            <p>Note: Only {{numfails}} fail is required to fail this mission</p>
+        {% else %}
+            <p>You are part of the resistance and can not fail this mission.</p>
+            <form type='get' action='/gamerm{{round}}w'>
+                <input type='hidden' name='id' value='{{gameid}}'/>
+                <input type='hidden' name='user' value='{{user}}'/>
+                <input type='hidden' name='passfail' value='pass'/>
+                <button type='submt' value='submit'>Pass Mission</button>
+            </form>
+        {% endif %}
+    </div>
+  </body>
+</html>

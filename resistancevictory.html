@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC
+"-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd"
+    >
+<html lang="en">
+  <head>
+    <title>Avalon - Approve Reject</title>
+    <link href = "/static/css/gamepage.css" rel = "stylesheet">
+  </head>
+  <body>
+    <div id = "main_box">
+    <div id= "header_box_background">
+    <div id = "header_box">
+    Avalon - Game Over
+    </div>
+    </div>
+    </div>
+    <div id="contentdiv">
+        <h2>Resistance wins!</h2>
+        <p>List of Characters and Roles:</p>
+        <ul>
+            {% for player in game.playerroles %}
+            <li>{{player}} - {{ game.playerroles[player]}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+  </body>
+</html>

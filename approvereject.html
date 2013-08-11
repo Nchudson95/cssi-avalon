@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd"
+    >
+<html lang="en">
+  <head>
+    <title>Avalon - Approve Reject</title>
+    <link href = "/static/css/gamepage.css" rel = "stylesheet">
+  </head>
+  <body>
+    <div id = "main_box">
+    <div id= "header_box_background">
+    <div id = "header_box">
+    Avalon - Approve Reject
+    </div>
+    </div>
+    </div>
+    <div id="contentdiv">
+        <p>This is the MissionSelect Vote Page</p>
+        <p>Here are the players nominated to go on the mission:</p>
+        <ul>
+            {% for player in game.pickedonmission %}
+                <li> {{ player }} </li>
+            {% endfor %}
+        </ul>
+        
+        <p>Now vote whether you want to approve or reject this mission:</p>
+        <form method='get' action='/gamerv{{round}}v'>
+            <p>
+                Approve: <input type='radio' name='vote' value='approve'>
+                Reject: <input type='radio' name='vote' value='reject'>
+            </p>
+            <input type='hidden' name='id' value= '{{gameid}}'/>
+            <input type='hidden' name='user' value='{{user}}'/>
+            <button type='submit' value='submit'>Vote!</button>
+        </form>
+    </div>
+  </body>
+</html>

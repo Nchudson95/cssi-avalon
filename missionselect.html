@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd"
+    >
+<html lang="en">
+  <head>
+    <title>Avalon - Mission Select</title>
+    <link href = "/static/css/gamepage.css" rel = "stylesheet">
+  </head>
+  <body>
+    <div id = "main_box">
+    <div id= "header_box_background">
+    <div id = "header_box">
+    Avalon - Mission Select
+    </div>
+    </div>
+    </div>
+    <div id="contentdiv">
+        <p>This is the MissionSelect Page</p>
+        {% if failselection %}
+            <p style='color:red;text-shadow: 1px 1px 8px #330'>You're selection was invalid, please try again</p>
+        {% endif %}
+        <p>Select {{requiredonmission}} of the following players to go on the mission:</p>
+        <form method='post' action='/gamerv{{round}}w'
+        <ul>
+            {% for player in game.playersingame %}
+            <li>
+                {{ player }} - 
+                Yes: <input type='radio' name='{{player}}' value='yes'>
+                No: <input type='radio' name='{{player}}' value='no'>
+                {% if player == user %}
+                <-- This is You
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        <input type='hidden' name='user' value='{{user}}'/>
+        <input type='hidden' name='id' value='{{gameid}}'/>
+        <button type='submit' value='submit'>Submit and Verify Selection</button>
+        </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Avalon - Create Game</title>
+    <link href = "/static/css/gamepage.css" rel = "stylesheet">
+  </head>
+  <body>
+    <div id = "main_box">
+    <div id= "header_box_background">
+    <div id = "header_box">
+        Avalon - Create Game
+    </div>
+    </div>
+    <div id='contentdiv'>
+        <p>Congratulations! You've created a new game</p>
+        <p>Now click on the button to enter the game lobby</p>
+        <form method='get' action='/gamlobby'>
+            <input type='hidden' name='id' value='{{games[0].key.id()}}'>
+            <input type='hidden' name='user' value='{{ user }}'>
+            <button type='submit' value='submit'>Game Lobby</button><!--<p style = 'color:white'></p>-->
+        </form>
+    </div>
+</body>

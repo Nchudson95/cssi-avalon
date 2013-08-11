@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd"
+    >
+<html lang="en">
+  <head>
+    <title>Avalon - Create Game</title>
+    <link href = "/static/css/gamepage.css" rel = "stylesheet">
+  </head>
+  <body>
+    <div id = "main_box">
+    <div id= "header_box_background">
+    <div id = "header_box">
+    Avalon - Create Game
+    </div>
+    </div>
+    </div>
+    <div id="contentdiv">
+     {% if game %}
+    
+    <p style = 'color:red'>Congratulations! You've created a new game </p>
+    
+    {% endif %}
+    
+    <h1>Create Game And Choose Your Options</h1>
+    <form action='/creategame' method='post'>
+    <label>Name of Game:
+        <input type='text' name='nameofgame' placeholder="Enter the game's name here">
+    </label>
+        <br><br>
+    <label>Creator:
+       <input type='text' name='creator' placeholder='Type your name here'>
+       <p>You will be added to this game automatically</p>
+       </label>
+        <p>Number of Players: 
+        <select name = "max_players">
+            <option name = "5">5</option>
+            <option name = "6">6</option>
+            <option name = "7">7</option>
+            <option name = "8">8</option>
+            <option name = "9">9</option>
+            <option name = "10">10</option>
+        </select></p>
+        <br><br>
+         <button type='submit'>Start Game</button>
+    </form>   
+    </div>
+  </body>
+</html>

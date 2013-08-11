@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd"
+    >
+<html lang="en">
+  <head>
+    <meta http-equiv='refresh' content='2'>
+    <title>Avalon - Create Game</title>
+    <link href = "/static/css/gamepage.css" rel = "stylesheet">
+  </head>
+  <body>
+    <div id = "main_box">
+    <div id= "header_box_background">
+    <div id = "header_box">
+    Avalon - Create Game
+    </div>
+    </div>
+    </div>
+    <div id="contentdiv">
+        <p>This is the MissionSelect Page</p>
+        <p>Waiting for other players to submit their votes to approve or reject this mission</p>
+        <p>Votes present {{ game.selectionvotes|length }}/{{game.maxplayers}} votes</p>
+        <form type='post' action='/gamerv{{round}}v'>
+            <input type='hidden' name='id' value='{{gameid}}'/>
+            <input type='hidden' name='user' value='{{user}}'/>
+        </form>
+    </div>
+  </body>
+</html>
