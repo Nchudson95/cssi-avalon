@@ -3,14 +3,14 @@
     >
 <html lang="en">
   <head>
-    <title>Avalon - Create Game</title>
+    <title>Avalon - Approve Reject</title>
     <link href = "/static/css/gamepage.css" rel = "stylesheet">
   </head>
   <body>
     <div id = "main_box">
     <div id= "header_box_background">
     <div id = "header_box">
-    Avalon - Create Game
+    Avalon - Approve Reject
     </div>
     </div>
     </div>
@@ -32,13 +32,13 @@
             <h2>Mission was rejected</h2>
             {% if game.roundscores[round - 1] == 'fail' %}
                 <h3>Spys win this mission!</h3>
-                <form type='get' action='/gamerv2w'>
+                <form type='get' action='/gamerv{{round}}w'>
                     <input type='hidden' name='id' value='{{gameid}}'/>
                     <input type='hidden' name='user' value='{{ user }}'/>
                     <button type='submit' value='submit'>Next Round</button>
                 </form>
             {% else %}
-                <p>{{game.currentround}}/5 to automatic Spy victory</p>
+                <p>{{game.rejectcount}}/5 to automatic Spy victory</p>
                 <p>Reassigning players on mission....</p>
                 <form type='get' action='/gamerv{{round}}w'>
                     <input type='hidden' name='id' value='{{gameid}}'/>

@@ -27,12 +27,16 @@
       </label>
       <p>Current Games:</p>
       <ul>
-      {% if not games[0] %}
+      {% if nogames %}
         <li>There are no current games. Click on the "Create Game" button to create a new game.</li>
       {% endif %}
       {% for game in games %}
         <li>
-            Name: {{ game.nameofgame }} - Players: {{ game.playersingame|join(', ') }} - Creator: {{ game.gamecreator}} 
+            Name: {{ game.nameofgame }} - Players: {{ game.playersingame|join(', ') }} - Creator: {{ game.gamecreator}} - Max Players: {{game.maxplayers}} -
+            Special Roles: 
+            {% if "Mordrid" in game.roles[0:(game.maxplayers)] %}Mordrid {% endif %}
+            {% if "Morgana" in game.roles[0:(game.maxplayers)] %}Morgana Percival {% endif %}
+            {% if "Oberon" in game.roles[0:(game.maxplayers)] %}Oberon {% endif %}
             {% if not game.playersingame|length >= game.maxplayers %}
                 <input type='radio' name='game' value="{{ game.key.id() }}">
             {% endif %}
@@ -43,12 +47,11 @@
       {% endfor %}
       </ul>
       <button type="submit" id='first_submit'>Join Game</button>
-    
-    
     </form>
-    <form action='/creategame'>
-      <button>Create New Game</button>
-    </form>
+    <!-- <form action='/creategame'> -->
+      <a href='/creategame'><button>Create New Game</button></a>
+    <!-- </form> -->
+        <a href='/instructions'><button>Instructions</button></a>
     </div>
  
 </html> 

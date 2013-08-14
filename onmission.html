@@ -17,7 +17,7 @@
     <div id='contentdiv'>
         <h2>Current Scores:</h2>
         <p>Resistance: {{scores[0]}} - Spies: {{scores[1]}}</p>
-        {% if game.playerroles[user] in ['assasin','morgana', 'spy1','spy2'] %}
+        {% if game.playerroles[user] in ['Assasin','Morgana','Mordrid','Oberon','Spy 1','Spy 2','Spy 3'] %}
             <p>Choose whether you want to pass or fail this mission:</p>
             <ul>
                     <form type='get' action='/gamerm{{round}}w'>

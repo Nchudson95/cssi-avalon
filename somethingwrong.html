@@ -22,4 +22,8 @@
             <li>{{player}} - {{game.playerroles[player]}}</li>
             {% endfor %}
         </ul>
+        <form type='get' action='/'>
+            <input type='hidden' name='id' value='{{gameid}}'/>
+            <button type='submit' value='submit'>Back Game Select</button>
+        </form>
     </div>

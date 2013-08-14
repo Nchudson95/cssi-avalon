@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang=en>
+  <head>
+    <title>Avalon - Assasin Selection</title>
+    <link href="http://roboto-webfont.googlecode.com/svn/trunk/roboto.all.css" rel="stylesheet" type="text/css">
+    <link href = "/static/css/gamepage.css" rel = "stylesheet">
+  </head>
+  <body>
+    <div id = "main_box">
+    <div id= "header_box_background">
+    <div id = "header_box">
+    Avalon - Assasin Selection
+    </div>
+    </div>
+    <div id='contentdiv'>
+        <h3>Now select who you believe Merlin is:</h3>
+        <form method='post' action='/gameassasin'>
+            <ul>
+                {% for player in game.playerroles %}
+                    {% if player != user %}
+                        <li>
+                            {{player}} <input type='radio' name='kill' value='{{player}}'/>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <input type='hidden' name='id' value='{{gameid}}'/>
+            <input type='hidden' name='user' value='{{user}}'/>
+            <button type='submit' value='submit'>Submit Selection</button>
+        </form>
+    </div>
+  </body>
+</html>

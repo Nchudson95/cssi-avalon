@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang=en>
+  <head>
+    {% if game.roundscores == '6' %}
+        <meta http-equiv="refresh" content="2" >
+    {% endif %}
+    <title>Avalon - Assasin Selection</title>
+    <link href="http://roboto-webfont.googlecode.com/svn/trunk/roboto.all.css" rel="stylesheet" type="text/css">
+    <link href = "/static/css/gamepage.css" rel = "stylesheet">
+  </head>
+  <body>
+    <div id = "main_box">
+    <div id= "header_box_background">
+    <div id = "header_box">
+    Avalon - Assasin Selection
+    </div>
+    </div>
+    <div id='contentdiv'>
+        {% if game.roundscores[5] == '6' %}
+        <p>Waiting for the Assasin to make his/her selection</p>
+        {% endif %}
+        {% if game.roundscores[5] == "Killed" %}
+        <h2>Spies win!</h2>
+        <p>List of Characters and Roles:</p>
+        <ul>
+            {% for player in game.playerroles %}
+            <li>{{player}} - {{ game.playerroles[player]}}</li>
+            {% endfor %}
+        </ul>
+        <form type='get' action='/'>
+            <input type='hidden' name='id' value='{{gameid}}'/>
+            <button type='submit' value='submit'>Back Game Select</button>
+        </form>
+        {% elif game.roundscores[5] == "Failed" %}
+        <h2>Resistance wins!</h2>
+        <p>List of Characters and Roles:</p>
+        <ul>
+            {% for player in game.playerroles %}
+            <li>{{player}} - {{ game.playerroles[player]}}</li>
+            {% endfor %}
+        </ul>
+        <form type='get' action='/'>
+            <input type='hidden' name='id' value='{{gameid}}'/>
+            <button type='submit' value='submit'>Back Game Select</button>
+        </form>
+        {% endif %}
+        

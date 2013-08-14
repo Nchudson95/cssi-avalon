@@ -43,7 +43,20 @@
                 </form>
             {% endif %}
         {% endif %}
-        <p>{{game.playerroles}}</p>
+        {% if game.playerroles != {} %}
+            <p>You are "{{game.playerroles[user]}}"</p>
+            {% if visibleroles != [] %}
+                <p>As {{game.playerroles[user]}} you can see that the following players:</p>
+                <ul>
+                    {% for player in visibleroles %}
+                    <li>{{player}}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% if user|lower == 'aneesha' %}
+                <p>Please pay attention to which Character you are, especially you, Aneesha... We dont want another Aneesha moment.</p>
+            {% endif %}
+        {% endif %}
     </div>
 </body>
 </html>

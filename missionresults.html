@@ -26,6 +26,7 @@
         {% elif game.roundscores[round - 2] == 'fail' %}
             <h2>Mission Failed!</h2>
             <p>Point added to the Spies</p>
+            <p>There was {{failvotes}} "Fails" on this mission.</p>
             <form type='get' action='/gamerv{{round}}w'>
                 <input type='hidden' name='id' value='{{gameid}}'/>
                 <input type='hidden' name='user' value='{{user}}'/>

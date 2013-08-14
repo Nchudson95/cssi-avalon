@@ -33,13 +33,28 @@
        </label>
         <p>Number of Players: 
         <select name = "max_players">
-            <option name = "5">5</option>
-            <option name = "6">6</option>
-            <option name = "7">7</option>
-            <option name = "8">8</option>
-            <option name = "9">9</option>
-            <option name = "10">10</option>
+            <option name = "5" value='5'>5</option>
+            <option name = "6" value='6'>6</option>
+            <option name = "7" value='7'>7</option>
+            <option name = "8" value='8'>8</option>
+            <option name = "9" value='9'>9</option>
+            <option name = "10" value='10'>10</option>
         </select></p>
+        <p>Select which Special Characters will be in this game:</p>
+        <label>Mordrid:
+            Yes<input type='radio' name='mordrid' value='yes'/>
+            No<input type='radio' name='mordrid' value='no' checked='checked'/>
+        </label>
+        <br>
+        <label>Oberon:
+            Yes<input type='radio' name='oberon' value='yes'/>
+            No<input type='radio' name='oberon' value='no' checked='checked'/>
+        </label>
+        <br>
+        <label>Percival and Morgana:
+            Yes<input type='radio' name='pandm' value='yes' checked='checked'/>
+            No<input type='radio' name='pandm' value='no'/>
+        </label>
         <br><br>
          <button type='submit'>Start Game</button>
     </form>   

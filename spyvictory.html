@@ -3,14 +3,14 @@
     >
 <html lang="en">
   <head>
-    <title>Avalon - Approve Reject</title>
+    <title>Avalon - Spy Victory</title>
     <link href = "/static/css/gamepage.css" rel = "stylesheet">
   </head>
   <body>
     <div id = "main_box">
     <div id= "header_box_background">
     <div id = "header_box">
-    Avalon - Game Over
+    Avalon - Spy Victory
     </div>
     </div>
     </div>
@@ -22,6 +22,10 @@
             <li>{{player}} - {{ game.playerroles[player]}}</li>
             {% endfor %}
         </ul>
+        <form type='get' action='/'>
+            <input type='hidden' name='id' value='{{gameid}}'/>
+            <button type='submit' value='submit'>Back Game Select</button>
+        </form>
     </div>
   </body>
 </html>
